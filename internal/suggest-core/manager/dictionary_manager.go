@@ -9,7 +9,7 @@ type DictionaryManager struct {
 
 // CreateDictionary 创建词典
 func (m *DictionaryManager) CreateDictionary(code string) (model.Dictionary, error) {
-	return model.Dictionary{}, nil
+	return nil, nil
 }
 
 // InitDictionary 初始化词典

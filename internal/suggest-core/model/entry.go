@@ -75,10 +75,10 @@ func (o *DoctorEntryObject) ToJson() string {
 }
 
 type HospitalEntryObject struct {
-	Code   string
-	Id     int
-	Name   string
-	Mobile string
+	Code      string
+	Id        int
+	Name      string
+	ShortName string
 }
 
 func (o *HospitalEntryObject) GetCode() string {

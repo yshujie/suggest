@@ -7,6 +7,12 @@ type DictionaryManager struct {
 	wBank model.WordBank
 }
 
+func NewDictionaryManager(wBack model.WordBank) *DictionaryManager {
+	return &DictionaryManager{
+		wBank: wBack,
+	}
+}
+
 // CreateDictionary 创建词典
 func (m *DictionaryManager) CreateDictionary(code string) (model.Dictionary, error) {
 	return nil, nil

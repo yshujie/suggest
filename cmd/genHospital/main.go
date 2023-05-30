@@ -6,7 +6,7 @@ import (
 )
 
 func init() {
-	code := model.WordBankCode(model.Hospital)
+	code := model.Hospital
 
 	if _, ok := interface{}(code).(model.WordBankCode); !ok {
 		panic("code is not a word bank code")

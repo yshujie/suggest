@@ -9,7 +9,7 @@ const (
 
 // Dictionary 词典，是一类数据的不同实现，比如：HashDictionary、TernaryTreeDictionary
 type Dictionary interface {
-	GetCode() WordBankCode
+	GetCode() DictionaryCode
 	GetSize() int
 	GetLen() int
 	GetLastUpdateTime() int64
@@ -21,7 +21,7 @@ type Dictionary interface {
 
 // HashDictionary 哈希词典，是一类数据的实现，包含一个词典代码、大小、长度、词条列表和最后更新时间
 type HashDictionary struct {
-	Code           WordBankCode
+	Code           DictionaryCode
 	Size           int
 	Len            int
 	Entry          []Entry
@@ -29,7 +29,7 @@ type HashDictionary struct {
 }
 
 // NewHashDictionary 创建一个哈希词典
-func NewHashDictionary(code WordBankCode) *HashDictionary {
+func NewHashDictionary(code DictionaryCode) *HashDictionary {
 	return &HashDictionary{
 		Code: code,
 		Size: 0,
@@ -37,7 +37,7 @@ func NewHashDictionary(code WordBankCode) *HashDictionary {
 	}
 }
 
-func (d *HashDictionary) GetCode() WordBankCode {
+func (d *HashDictionary) GetCode() DictionaryCode {
 	return d.Code
 }
 
@@ -67,7 +67,7 @@ func (d *HashDictionary) UpdateEntry(entry Entry) error {
 
 // TernaryTreeDictionary 三叉树词典，是一类数据的实现，包含一个词典代码、大小、长度、词条列表和最后更新时间
 type TernaryTreeDictionary struct {
-	Code           WordBankCode
+	Code           DictionaryCode
 	Size           int
 	Len            int
 	Entry          []Entry
@@ -75,7 +75,7 @@ type TernaryTreeDictionary struct {
 }
 
 // NewTernaryTreeDictionary 创建一个三叉树词典
-func NewTernaryTreeDictionary(code WordBankCode) *TernaryTreeDictionary {
+func NewTernaryTreeDictionary(code DictionaryCode) *TernaryTreeDictionary {
 	return &TernaryTreeDictionary{
 		Code: code,
 		Size: 0,
@@ -83,7 +83,7 @@ func NewTernaryTreeDictionary(code WordBankCode) *TernaryTreeDictionary {
 	}
 }
 
-func (d *TernaryTreeDictionary) GetCode() WordBankCode {
+func (d *TernaryTreeDictionary) GetCode() DictionaryCode {
 	return d.Code
 }
 

@@ -35,20 +35,22 @@ func (m *WordBankManager) InitWordBank(wordBank model.WordBank) error {
 	// 创建词典管理器
 	dictionaryManager := NewDictionaryManager(wordBank)
 
-	// 创建 Hash 词典
-	hashDictionary, err := dictionaryManager.CreateDictionary("hash")
-	// 初始化 Hash 词典
-	err = dictionaryManager.InitDictionary(hashDictionary, file)
-	if err != nil {
-		return err
-	}
+	// 字典 code 列表
+	dictionaryCodes := []model.DictionaryCode{model.HashDictionaryCode, model.TernaryTreeCode}
 
-	// 创建 TernaryTree 词典
-	ternaryTreeDictionary, err := dictionaryManager.CreateDictionary("ternaryTree")
-	// 初始化 TernaryTree 词典
-	err = dictionaryManager.InitDictionary(ternaryTreeDictionary, file)
-	if err != nil {
-		return err
+	// 循环 dictionaryCodes，创建词典
+	for _, code := range dictionaryCodes {
+		dictionary, err := dictionaryManager.CreateDictionary(code)
+		if err != nil {
+			return err
+		}
+
+		err = dictionaryManager.InitDictionary(dictionary, file)
+		if err != nil {
+			return err
+		}
+
+		wordBank.AddDictionary(dictionary)
 	}
 
 	return nil

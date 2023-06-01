@@ -17,7 +17,7 @@ func NewDictionaryManager(wBack model.WordBank) *DictionaryManager {
 }
 
 // CreateDictionary 创建词典
-func (m *DictionaryManager) CreateDictionary(code string) (model.Dictionary, error) {
+func (m *DictionaryManager) CreateDictionary(code model.DictionaryCode) (model.Dictionary, error) {
 	return nil, nil
 }
 

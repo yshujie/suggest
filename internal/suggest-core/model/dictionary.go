@@ -1,5 +1,12 @@
 package model
 
+type DictionaryCode string
+
+const (
+	HashDictionaryCode DictionaryCode = "hash"
+	TernaryTreeCode    DictionaryCode = "ternary_tree"
+)
+
 // Dictionary 词典，是一类数据的不同实现，比如：HashDictionary、TernaryTreeDictionary
 type Dictionary interface {
 	GetCode() WordBankCode

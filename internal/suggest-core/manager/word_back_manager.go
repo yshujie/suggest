@@ -1,7 +1,6 @@
 package manager
 
 import (
-	"bufio"
 	"github.com/yshujie/suggest/internal/suggest-core/model"
 	"os"
 	"path/filepath"
@@ -33,25 +32,23 @@ func (m *WordBankManager) InitWordBank(wordBank model.WordBank) error {
 		return err
 	}
 
+	// 创建词典管理器
 	dictionaryManager := NewDictionaryManager(wordBank)
 
+	// 创建 Hash 词典
 	hashDictionary, err := dictionaryManager.CreateDictionary("hash")
+	// 初始化 Hash 词典
+	err = dictionaryManager.InitDictionary(hashDictionary, file)
+	if err != nil {
+		return err
+	}
+
+	// 创建 TernaryTree 词典
 	ternaryTreeDictionary, err := dictionaryManager.CreateDictionary("ternaryTree")
-
-	// 读取词库文件中的词条
-	scanner := bufio.NewScanner(file)
-	for scanner.Scan() {
-		entryStr := scanner.Text()
-
-		// 将词条添加到 Hash 词典中
-		hashDictionary.AddEntry(model.Entry{
-			Word: entryStr,
-		})
-
-		// 将词条添加到 TernaryTree 词典中
-		ternaryTreeDictionary.AddEntry(model.Entry{
-			Word: entryStr,
-		})
+	// 初始化 TernaryTree 词典
+	err = dictionaryManager.InitDictionary(ternaryTreeDictionary, file)
+	if err != nil {
+		return err
 	}
 
 	return nil

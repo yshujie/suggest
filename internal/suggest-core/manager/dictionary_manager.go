@@ -1,6 +1,9 @@
 package manager
 
-import "github.com/yshujie/suggest/internal/suggest-core/model"
+import (
+	"github.com/yshujie/suggest/internal/suggest-core/model"
+	"os"
+)
 
 // DictionaryManager 词典管理器
 type DictionaryManager struct {
@@ -19,7 +22,7 @@ func (m *DictionaryManager) CreateDictionary(code string) (model.Dictionary, err
 }
 
 // InitDictionary 初始化词典
-func (m *DictionaryManager) InitDictionary(dic model.Dictionary) error {
+func (m *DictionaryManager) InitDictionary(dic model.Dictionary, file *os.File) error {
 	return nil
 }
 

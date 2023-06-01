@@ -12,8 +12,15 @@ const (
 
 // WordBank 词库，是一类数据的全集，包含一个词库代码和一组词典
 type WordBank struct {
-	Code         string
+	Code         WordBankCode
 	Dictionaries []Dictionary
+}
+
+// NewWordBank 创建一个词库
+func NewWordBank(code WordBankCode) *WordBank {
+	return &WordBank{
+		Code: code,
+	}
 }
 
 // AddDictionary 添加词典

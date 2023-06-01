@@ -7,10 +7,10 @@ import (
 
 // DictionaryManager 词典管理器
 type DictionaryManager struct {
-	wBank model.WordBank
+	wBank *model.WordBank
 }
 
-func NewDictionaryManager(wBack model.WordBank) *DictionaryManager {
+func NewDictionaryManager(wBack *model.WordBank) *DictionaryManager {
 	return &DictionaryManager{
 		wBank: wBack,
 	}
@@ -18,6 +18,7 @@ func NewDictionaryManager(wBack model.WordBank) *DictionaryManager {
 
 // CreateDictionary 创建词典
 func (m *DictionaryManager) CreateDictionary(code model.DictionaryCode) (model.Dictionary, error) {
+
 	return nil, nil
 }
 

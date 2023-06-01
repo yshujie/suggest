@@ -8,25 +8,23 @@ import (
 
 // WordBankManager 词库管理器
 type WordBankManager struct {
-	code string `json:"code,omitempty"`
+	Code model.WordBankCode `json:"code,omitempty"`
 }
 
 // NewWordBackManager 创建词库管理器
 func NewWordBackManager(code model.WordBankCode) *WordBankManager {
 	return &WordBankManager{
-		code: string(code),
+		Code: code,
 	}
 }
 
 // CreateWordBack 创建词库
-func (m *WordBankManager) CreateWordBack() (model.WordBank, error) {
-	return model.WordBank{
-		Code: m.code,
-	}, nil
+func (m *WordBankManager) CreateWordBack() (*model.WordBank, error) {
+	return model.NewWordBank(m.Code), nil
 }
 
 // InitWordBank 初始化词库
-func (m *WordBankManager) InitWordBank(wordBank model.WordBank) error {
+func (m *WordBankManager) InitWordBank(wordBank *model.WordBank) error {
 	file, err := m.openSourceDataFile()
 	if err != nil {
 		return err
@@ -71,7 +69,7 @@ func (m *WordBankManager) openSourceDataFile() (*os.File, error) {
 
 // buildFilePath 构建词库文件路径
 func (m *WordBankManager) buildFilePath() string {
-	return filepath.Join("data", m.code, m.code+".txt")
+	return filepath.Join("data", string(m.Code), string(m.Code)+".txt")
 }
 
 // DestroyWordBack 销毁词库
